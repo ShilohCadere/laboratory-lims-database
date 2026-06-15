@@ -1,4 +1,4 @@
-# Clinical LIMS Database
+# Laboratory LIMS Database
 
 ## Recruiter Summary
 
