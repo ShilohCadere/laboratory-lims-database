@@ -6,6 +6,10 @@ A relational Oracle SQL database designed from laboratory business requirements 
 
 This project demonstrates requirements-driven relational database design, sample traceability, metadata management, automated key generation, audit tracking, query abstraction, and data integrity controls for laboratory operations.
 
+## Entity Relationship Diagram
+
+![LIMS ERD](docs/LIMS_ERD.png)
+
 ## What This Project Demonstrates
 
 * Translating laboratory business requirements into a relational database schema
