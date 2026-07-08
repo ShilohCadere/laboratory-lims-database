@@ -1,123 +1,193 @@
 # Laboratory LIMS Database
 
-## Recruiter Summary
+## At a Glance
 
-A relational Oracle SQL database designed from laboratory business requirements to model sample tracking, workflow management, audit logging, and structured data access in a simulated regulated laboratory environment.
+- Requirements-driven Oracle SQL laboratory information management system (LIMS).
+- Models sample traceability, workflow tracking, audit logging, and structured laboratory data.
+- Demonstrates relational database design, data integrity, and workflow automation.
+- Simulates laboratory operations using a normalized database schema and synthetic data.
 
-This project demonstrates requirements-driven relational database design, sample traceability, metadata management, automated key generation, audit tracking, query abstraction, and data integrity controls for laboratory operations.
+---
 
-## Entity Relationship Diagram
+## Overview
 
-![LIMS ERD](docs/LIMS_ERD.png)
+Laboratory LIMS Database is a portfolio project that models the core data infrastructure supporting laboratory operations. Beginning with documented business requirements, the project translates laboratory workflows into a normalized Oracle SQL database supporting sample traceability, workflow management, audit logging, and structured data access.
 
-## What This Project Demonstrates
+The repository emphasizes relational database design, data integrity, and laboratory informatics while using synthetic data within a simulated regulated laboratory environment.
 
-* Translating laboratory business requirements into a relational database schema
-* Designing tables from defined entities, attributes, relationships, and business rules
-* Modeling laboratory workflows involving projects, samples, instruments, employees, and supplies
-* Enforcing primary key and foreign key relationships for data integrity
-* Using Oracle sequences for automated key generation
-* Implementing triggers for audit tracking and record management
-* Creating views to simplify access to structured laboratory data
-* Applying indexes to support common query patterns
+---
 
-## System Context
+## Why This Project Exists
 
-This database models a laboratory information management system for a simulated environmental testing laboratory. The system replaces handwritten tracking logs with structured database records for samples, projects, instruments, employees, and supplies.
+Laboratory operations depend on accurate tracking of samples, projects, instruments, personnel, and supplies throughout the testing lifecycle. Maintaining those relationships requires more than storing data—it requires enforcing business rules, preserving traceability, and supporting consistent workflow management.
 
-The design focuses on traceability, auditability, workflow status tracking, and data consistency across laboratory operations.
+This project demonstrates that process.
 
-## Requirements-Driven Design
+Using Oracle SQL, the database models laboratory workflows through normalized relational design, primary and foreign key relationships, automated key generation, audit tracking, and query abstraction.
 
-The schema was built from a defined requirements document specifying entities, attributes, relationship cardinality, and workflow constraints.
+The focus is not a specific laboratory discipline. Instead, the project demonstrates how relational database architecture supports laboratory operations, traceability, and downstream analytical workflows.
 
-The resulting implementation includes one-to-many and one-to-one relationships across laboratory entities, with business rules supporting sample assignment, instrument usage, project oversight, supply usage, and employee handling.
+---
 
-## Data Model Overview
+## System Architecture
+
+Laboratory LIMS Database models the data layer supporting laboratory operations. Core laboratory entities are represented independently while maintaining relationships through normalized relational design.
+
+```
+Projects
+     │
+     ▼
+Samples
+     │
+     ├──── Instruments
+     │
+     ├──── Employees
+     │
+     └──── Supplies
+            │
+            ▼
+Views / Queries
+```
+
+---
+
+## Repository Structure
+
+```
+laboratory-lims-database/
+├── schema/            # Table definitions
+├── sequences/         # Automated key generation
+├── triggers/          # Audit tracking
+├── views/             # Query abstraction
+├── indexes/           # Performance optimization
+├── sample_data/       # Synthetic demonstration data
+└── README.md
+```
+
+The repository is organized around database responsibilities rather than implementation order. Schema definition, automation, optimization, and data access remain separated while supporting a unified laboratory information system.
+
+---
+
+## Current Capabilities
+
+Current functionality includes:
+
+- Modeling laboratory projects, samples, instruments, employees, and supplies.
+- Enforcing relational integrity through primary and foreign keys.
+- Generating surrogate keys using Oracle sequences.
+- Tracking record history through database triggers.
+- Simplifying common queries using database views.
+- Improving query performance through indexing.
+- Supporting laboratory workflow traceability through normalized relationships.
+
+---
+
+## Example Data Model
 
 Core entities include:
 
-* **Projects** — laboratory testing requests and workflow status
-* **Samples** — biological or environmental materials linked to projects and batches
-* **Instruments** — laboratory equipment used for sample analysis
-* **Employees** — operational users and laboratory roles
-* **Supplies** — materials used for sample preparation and analysis
+### Projects
 
-Key relationships include:
+Laboratory testing requests and workflow status.
 
-* A project can contain multiple samples
-* A sample belongs to one project
-* A sample can be associated with instrument processing activity
-* Employees are linked to sample handling and project oversight
-* Supplies support sample preparation and analysis workflows
+### Samples
 
-## Core System Features
+Materials tracked throughout laboratory processing.
 
-### Relational Schema Design
+### Instruments
 
-The database uses normalized relational tables with primary and foreign key constraints to maintain consistency across laboratory entities.
+Equipment supporting laboratory workflows.
 
-### Automated Key Management
+### Employees
 
-Oracle sequences generate consistent surrogate keys across core tables.
+Personnel responsible for laboratory activities.
 
-### Audit Tracking
+### Supplies
 
-Triggers support automatic tracking of record creation, modification timestamps, and user attribution.
+Materials supporting sample preparation and analysis.
 
-### Query Abstraction
+The included records are synthetic demonstration data intended solely to illustrate database behavior.
 
-Views provide simplified access to structured data for common workflow entities, including projects, samples, instruments, employees, and supplies.
+---
 
-### Indexing
+## Execution
 
-Indexes support frequently accessed query paths, including batch-level sample tracking, foreign key joins, and workflow-related lookups.
+Execute the SQL scripts within an Oracle database environment to create the complete schema, supporting objects, and demonstration dataset.
 
-## Example Workflow
-
-A typical usage flow:
-
-1. A project is created for a laboratory testing request.
-2. Samples are registered under the project and assigned batch identifiers.
-3. Samples are associated with preparation, storage, or analysis status.
-4. Instruments and employees are linked to workflow activity.
-5. Data is queried through structured views for downstream review, reporting, and operational tracking.
+---
 
 ## Example Outputs
 
-The database implementation includes validation queries showing:
+Successful execution creates a complete laboratory information management system including:
 
-* Created tables, views, indexes, sequences, and triggers
-* Employee and instrument records
-* Active instrument views
-* Project and sample tracking records
-* Supply reorder queries
-* Transaction rollback and commit behavior
+### Database Schema
 
-## Technology Stack
+Normalized relational tables supporting laboratory workflows.
 
-**Oracle SQL** • **Relational Database Design** • **Sequences** • **Triggers** • **Views** • **Indexes**
+### Automation
 
-## Design Goals
+Sequences and triggers supporting key generation and audit tracking.
 
-This project emphasizes:
+### Query Views
 
-* Traceable sample and workflow state management
-* Structured relational data modeling
-* Auditability for operational records
-* Data integrity across laboratory entities
-* Translation of business requirements into database implementation
-* Compatibility with downstream QC, review, and reporting workflows
+Simplified access to laboratory workflow information.
 
-## Future Enhancements
+### Validation Queries
 
-* ERD/schema diagram
-* Sample query output examples
-* REST API layer for programmatic database access
-* Expanded role-based access control
-* Additional schema normalization review
+Example queries demonstrating sample traceability, workflow status, and operational reporting.
+
+---
+
+## Design Decisions
+
+Several architectural decisions intentionally shape this project.
+
+### Requirements-Driven Design
+
+The schema was developed from documented laboratory business requirements before implementation.
+
+### Normalized Relational Design
+
+Entities are separated to minimize redundancy while preserving data integrity.
+
+### Automated Database Behavior
+
+Sequences and triggers automate key generation and audit tracking rather than relying on application logic.
+
+### Query Abstraction
+
+Views simplify common laboratory queries while insulating downstream consumers from schema complexity.
+
+---
+
+## Testing
+
+The database is validated through execution of schema creation scripts, integrity constraints, automated database objects, and representative workflow queries demonstrating correct system behavior.
+
+---
+
+## Future Improvements
+
+Planned future development includes:
+
+- Adding an entity relationship diagram.
+- Expanding representative query examples.
+- Developing a REST API for programmatic access.
+- Extending role-based access controls.
+- Continuing schema refinement as laboratory workflows evolve.
+
+Future development will continue to prioritize maintainable database architecture, laboratory traceability, and relational data integrity.
+
+---
+
+## Technologies Used
+
+Oracle SQL • Relational Database Design • Sequences • Triggers • Views • Indexes
+
+---
 
 ## Author
 
 **Shiloh Cadere**
-Bioinformatics Analyst specializing in genomics QC, data validation, workflow traceability, and laboratory data systems.
+
+Bioinformatics analyst focused on genomics QC, analytical review, workflow development, and reproducible bioinformatics software.
