@@ -49,22 +49,23 @@ Samples
 Views / Queries
 ```
 
+An entity relationship diagram is included in `docs/LIMS_ERD.png`.
+
 ---
 
 ## Repository Structure
 
-```
+```text
 laboratory-lims-database/
-├── schema/            # Table definitions
-├── sequences/         # Automated key generation
-├── triggers/          # Audit tracking
-├── views/             # Query abstraction
-├── indexes/           # Performance optimization
-├── sample_data/       # Synthetic demonstration data
+├── oracle_lims_schema.sql   # Schema, sequences, triggers, views, indexes, and sample data
+├── LIMS Requirements.docx   # Documented business and workflow requirements
+├── docs/
+│   └── LIMS_ERD.png         # Entity relationship diagram
+├── LICENSE
 └── README.md
 ```
 
-The repository is organized around database responsibilities rather than implementation order. Schema definition, automation, optimization, and data access remain separated while supporting a unified laboratory information system.
+The implementation is consolidated in a single Oracle SQL script so the complete schema and supporting database objects can be reviewed and executed together. Requirements and data-model documentation are kept separately to preserve the connection between laboratory workflow needs and database design.
 
 ---
 
@@ -112,13 +113,13 @@ The included records are synthetic demonstration data intended solely to illustr
 
 ## Execution
 
-Execute the SQL scripts within an Oracle database environment to create the complete schema, supporting objects, and demonstration dataset.
+Execute `oracle_lims_schema.sql` within an Oracle database environment to create the schema, supporting database objects, and demonstration dataset.
 
 ---
 
 ## Example Outputs
 
-Successful execution creates a complete laboratory information management system including:
+Successful execution creates a laboratory information management data model including:
 
 ### Database Schema
 
@@ -134,7 +135,7 @@ Simplified access to laboratory workflow information.
 
 ### Validation Queries
 
-Example queries demonstrating sample traceability, workflow status, and operational reporting.
+Representative queries demonstrating sample traceability, workflow status, and operational reporting.
 
 ---
 
@@ -170,7 +171,6 @@ The database is validated through execution of schema creation scripts, integrit
 
 Planned future development includes:
 
-- Adding an entity relationship diagram.
 - Expanding representative query examples.
 - Developing a REST API for programmatic access.
 - Extending role-based access controls.
