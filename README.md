@@ -186,6 +186,15 @@ Oracle SQL • Relational Database Design • Sequences • Triggers • Views �
 
 ---
 
+## Related Portfolio Work
+
+- [Clinical NGS Workflow](https://github.com/ShilohCadere/clinical-ngs-workflow) demonstrates computational sequencing processing; this Oracle SQL database does not feed it directly.
+- [Clinical NGS Review](https://github.com/ShilohCadere/clinical-ngs-review) explores QC review and reporting with separate simulated inputs, not an integration with this LIMS model.
+
+## Validation scope
+
+The repository documents SQL schema objects and representative validation queries. This README does not establish a current automated Oracle test run or CI result; validate in an Oracle environment before claiming successful execution on a particular version.
+
 ## Author
 
 **Shiloh Cadere**
