@@ -57,7 +57,7 @@ An entity relationship diagram is included in `docs/LIMS_ERD.png`.
 
 ```text
 laboratory-lims-database/
-├── oracle_lims_schema.sql   # Schema, sequences, triggers, views, indexes, and sample data
+├── oracle_lims_schema.sql   # Saved Oracle execution output/transcript (not runnable SQL)
 ├── LIMS Requirements.docx   # Documented business and workflow requirements
 ├── docs/
 │   └── LIMS_ERD.png         # Entity relationship diagram
@@ -65,7 +65,7 @@ laboratory-lims-database/
 └── README.md
 ```
 
-The implementation is consolidated in a single Oracle SQL script so the complete schema and supporting database objects can be reviewed and executed together. Requirements and data-model documentation are kept separately to preserve the connection between laboratory workflow needs and database design.
+The checked-in `oracle_lims_schema.sql` is an Oracle execution transcript containing object-creation messages and query results, rather than the underlying SQL DDL/DML source. It provides historical evidence of a schema run but cannot be executed to recreate the database. The requirements and data-model documentation preserve additional design context.
 
 ---
 
@@ -113,7 +113,7 @@ The included records are synthetic demonstration data intended solely to illustr
 
 ## Execution
 
-Execute `oracle_lims_schema.sql` within an Oracle database environment to create the schema, supporting database objects, and demonstration dataset.
+The original executable schema source is not included at this path. **Do not execute `oracle_lims_schema.sql` as a setup script:** it is a saved Oracle console transcript. To make this project independently reproducible, recover and commit the actual DDL, triggers, views, seed data, and validation queries as separate `.sql` source files; then test them in an Oracle environment.
 
 ---
 
@@ -163,7 +163,7 @@ Views simplify common laboratory queries while insulating downstream consumers f
 
 ## Testing
 
-The database is validated through execution of schema creation scripts, integrity constraints, automated database objects, and representative workflow queries demonstrating correct system behavior.
+The saved Oracle transcript contains dated object creation/compilation output and representative query results (2022). It is historical execution evidence, not a current repeatable validation suite. No newly executed Oracle checks or automated CI pass are claimed.
 
 ---
 
@@ -193,7 +193,7 @@ Oracle SQL • Relational Database Design • Sequences • Triggers • Views �
 
 ## Validation scope
 
-The repository documents SQL schema objects and representative validation queries. This README does not establish a current automated Oracle test run or CI result; validate in an Oracle environment before claiming successful execution on a particular version.
+The committed `oracle_lims_schema.sql` contains historical Oracle execution output rather than executable schema source. The schema cannot currently be recreated from that file alone. A repeatable test requires recovered DDL/DML source and an Oracle instance; the historical transcript does not establish a current automated test pass.
 
 ## Author
 
